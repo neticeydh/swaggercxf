@@ -72,6 +72,19 @@
 		<artifactId>jcl-over-slf4j</artifactId>
 		<version>1.7.12</version>
 	 </dependency>
+	 <dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-java</artifactId>
+		<version>2.48.2</version>
+		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.freemarker</groupId>
+	  <artifactId>freemarker</artifactId>
+	  <version>2.3.23</version>
+	</dependency> 
+	
   </dependencies>
   
   <build>
@@ -125,19 +138,16 @@
             <plugin>
 		        <groupId>org.codehaus.mojo</groupId>
 		        <artifactId>exec-maven-plugin</artifactId>
-		        <version>1.4.0</version>
-		        <executions>
-		          <execution>		            
-		            <goals>
-		              <goal>exec</goal>
-		            </goals>
-		          </execution>
-		        </executions>
+		        <version>1.4.0</version>		        
 		        <configuration>
-		          <executable>maven</executable>
+		          <executable>java</executable>
+		          
 		          <!-- optional -->
 		          <!--<workingDirectory>/tmp</workingDirectory>-->
-		          <arguments>		            
+		          <arguments>		
+		              	<argument>-classpath</argument> <!-- 这是classpath属性，其值就是下面的<classpath/> -->  
+            			<classpath/>       
+            			<argument>com.ydh935.swaggercxf.App</argument>     
 		          </arguments>
 		        </configuration>
 		    </plugin>
