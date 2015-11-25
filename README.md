@@ -7,12 +7,13 @@ Swaggercxf是对Dropwizard的模仿。It is one copy of Dropwizard.
 
 ##工程依赖(Dependence)：
 
+```
    Dropwizard
    Jetty
    Freemarker
    Swagger
    Apache CXF
-   
+```   
    
 ##你可以：
 
