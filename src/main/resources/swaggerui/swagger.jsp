@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ page import="com.ydh935.swaggercxf.conf.Configuration"%>
+
+<%
+	String port = String.valueOf(Configuration.getInstance().getPort());
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <title>Swagger UI</title>
@@ -26,7 +34,7 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://petstore.swagger.io/v2/swagger.json";
+        url = "http://localhost:<%=port%>/api-docs";
       }
       window.swaggerUi = new SwaggerUi({
         url: url,

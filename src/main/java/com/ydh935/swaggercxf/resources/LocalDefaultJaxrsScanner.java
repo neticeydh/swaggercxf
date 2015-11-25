@@ -6,11 +6,14 @@ import java.util.Set;
 import javax.servlet.ServletConfig;
 import javax.ws.rs.core.Application;
 
+import com.wordnik.swagger.config.SwaggerConfig;
 import com.wordnik.swagger.jaxrs.config.AbstractScanner;
 import com.wordnik.swagger.jaxrs.config.JaxrsScanner;
+import com.wordnik.swagger.models.Swagger;
+import com.ydh935.swaggercxf.conf.Configuration;
 
 public class LocalDefaultJaxrsScanner extends AbstractScanner implements
-		JaxrsScanner {
+		JaxrsScanner, SwaggerConfig {
 	private boolean prettyPrint = false;
 
 	public Set<Class<?>> classesFromContext(Application app, ServletConfig sc) {
@@ -39,5 +42,12 @@ public class LocalDefaultJaxrsScanner extends AbstractScanner implements
 
 	public void setPrettyPrint(boolean shouldPrettyPrint) {
 		this.prettyPrint = shouldPrettyPrint;
+	}
+
+	@Override
+	public Swagger configure(Swagger swagger) {
+		// just for baseurl
+		swagger.setBasePath(Configuration.getInstance().getAppURLPrefix());
+		return swagger;
 	}
 }
